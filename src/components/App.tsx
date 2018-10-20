@@ -10,10 +10,6 @@ export default class App extends React.Component {
   }
 
   render(): JSX.Element {
-    return (
-      <button onClick={() => this.injected.dictionaryStore.increment()}>
-        {this.injected.dictionaryStore.count}
-      </button>
-    );
+    return <button>{'hello'}</button>;
   }
 }
