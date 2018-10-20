@@ -1,5 +1,19 @@
 import * as React from 'react';
+import { inject, observer } from 'mobx-react';
+import DictionaryStore from '../stores/DictionaryStore';
 
-const App = () => <div>{'hello'}</div>;
+@inject('dictionaryStore')
+@observer
+export default class App extends React.Component {
+  get injected() {
+    return this.props as { dictionaryStore: DictionaryStore };
+  }
 
-export default App;
+  render(): JSX.Element {
+    return (
+      <button onClick={() => this.injected.dictionaryStore.increment()}>
+        {this.injected.dictionaryStore.count}
+      </button>
+    );
+  }
+}
