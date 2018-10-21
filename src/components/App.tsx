@@ -12,13 +12,11 @@ export default class App extends React.Component {
   }
 
   render(): JSX.Element {
-    console.log(
-      'Current view name: ',
-      this.injected.viewStore.currentView.name
-    );
     switch (this.injected.viewStore.currentView.name) {
       case ViewName.Overview:
         return <DictionaryList />;
+      case ViewName.Dictionary:
+        return <span>{'Dictionary'}</span>;
       default:
         return <span>{'Not found'}</span>;
     }

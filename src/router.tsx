@@ -3,10 +3,8 @@ import ViewStore from './stores/ViewStore';
 import { autorun } from 'mobx';
 
 export function startRouting(viewStore: ViewStore) {
-  page('/', () => {
-    viewStore.showOverview();
-  });
-
+  page('/', () => viewStore.showOverview());
+  page('/dictionary', () => viewStore.showDictionary());
   page();
 
   autorun(() => {

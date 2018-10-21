@@ -2,6 +2,7 @@ import { observable } from 'mobx';
 
 export enum ViewName {
   Overview,
+  Dictionary,
   NotFound
 }
 

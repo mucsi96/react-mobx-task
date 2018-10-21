@@ -12,6 +12,8 @@ export default class ViewStore {
     switch (this.currentView.name) {
       case ViewName.Overview:
         return '/';
+      case ViewName.Dictionary:
+        return '/dictionary';
       default:
         return window.location.pathname;
     }
@@ -21,6 +23,13 @@ export default class ViewStore {
   public showOverview() {
     this.currentView = {
       name: ViewName.Overview
+    };
+  }
+
+  @action
+  public showDictionary() {
+    this.currentView = {
+      name: ViewName.Dictionary
     };
   }
 }
