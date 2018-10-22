@@ -4,10 +4,10 @@ import EditDictionary from '../components/EditDictionary';
 
 export default class EditDictionaryView implements View {
   public get path() {
-    return `/dictionary/${this.id}`;
+    return `/dictionary/edit/${this.id}`;
   }
 
-  public static pattern = '/dictionary/:id';
+  public static pattern = '/dictionary/edit/:id';
 
   constructor(public readonly id: string) {}
 

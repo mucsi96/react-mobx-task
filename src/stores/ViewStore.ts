@@ -3,7 +3,8 @@ import {
   View,
   OverviewView,
   CreateDictionaryView,
-  EditDictionaryView
+  EditDictionaryView,
+  DictionaryView
 } from '../views';
 import NotFoundView from '../views/NotFoundView';
 import page from 'page';
@@ -15,6 +16,7 @@ export default class ViewStore {
   constructor() {
     page(OverviewView.pattern, () => this.showOverview());
     page(CreateDictionaryView.pattern, () => this.createDictionary());
+    page(DictionaryView.pattern, ({ id }) => this.editDictionary(id));
     page(EditDictionaryView.pattern, ({ id }) => this.editDictionary(id));
     page(NotFoundView.pattern, () => this.showNotFound());
     page();
@@ -34,6 +36,11 @@ export default class ViewStore {
   @action
   public createDictionary() {
     this.currentView = new CreateDictionaryView();
+  }
+
+  @action
+  public showDictionary(id: string) {
+    this.currentView = new DictionaryView(id);
   }
 
   @action

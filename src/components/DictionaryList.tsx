@@ -30,7 +30,7 @@ export default class DictionaryList extends React.Component {
           {this.injected.dictionaryStore.dictionaries.map(({ id, name }) => (
             <div key={id} className="item">
               <div className="content">
-                <a className="header" onClick={() => this.handleClickEdit(id)}>
+                <a className="header" onClick={() => this.handleItemClick(id)}>
                   {name}
                 </a>
               </div>
@@ -58,7 +58,7 @@ export default class DictionaryList extends React.Component {
     this.injected.viewStore.createDictionary();
   };
 
-  private handleClickEdit = (id: string) => {
-    this.injected.viewStore.editDictionary(id);
+  private handleItemClick = (id: string) => {
+    this.injected.viewStore.showDictionary(id);
   };
 }
