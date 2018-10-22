@@ -15,9 +15,19 @@ export default class DictionaryStore {
     const index = this.dictionaries.findIndex(({ id }) => id === dictionaryId);
 
     if (index < 0) {
-      throw new Error(`Dictionary with index ${index} was not found.`);
+      throw new Error(`Dictionary with id ${dictionaryId} was not found.`);
     }
 
     this.dictionaries.splice(index, 1);
+  }
+
+  public getDictionaryById(dictionaryId: string): Dictionary {
+    const dictionary = this.dictionaries.find(({ id }) => id === dictionaryId);
+
+    if (!dictionary) {
+      throw new Error(`Dictionary with id ${dictionaryId} was not found.`);
+    }
+
+    return dictionary;
   }
 }

@@ -5,10 +5,14 @@ export default class Dictionary {
   public readonly id: string;
 
   @observable
+  public name: string;
+
+  @observable
   public transformations: Transformation[] = [];
 
-  constructor() {
+  constructor(name: string) {
     this.id = Date.now().toString();
+    this.name = name;
   }
 
   @action

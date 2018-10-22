@@ -3,6 +3,7 @@ export interface View {
   render: () => JSX.Element;
 }
 
-export { default as Overview } from './Overview';
-export { default as Dictionary } from './Dictionary';
-export { default as NotFound } from './NotFound';
+export { default as OverviewView } from './OverviewView';
+export { default as CreateDictionaryView } from './CreateDictionaryView';
+export { default as EditDictionaryView } from './EditDictionaryView';
+export { default as NotFoundView } from './NotFoundView';

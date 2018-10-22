@@ -1,16 +1,22 @@
 import { observable, autorun, action } from 'mobx';
-import { View, Overview, Dictionary } from '../views';
-import NotFound from '../views/NotFound';
+import {
+  View,
+  OverviewView,
+  CreateDictionaryView,
+  EditDictionaryView
+} from '../views';
+import NotFoundView from '../views/NotFoundView';
 import page from 'page';
 
 export default class ViewStore {
   @observable
-  public currentView: View = new NotFound();
+  public currentView: View = new NotFoundView();
 
   constructor() {
-    page(Overview.pattern, () => this.showOverview());
-    page(Dictionary.pattern, () => this.showDictionary());
-    page(NotFound.pattern, () => this.showNotFound());
+    page(OverviewView.pattern, () => this.showOverview());
+    page(CreateDictionaryView.pattern, () => this.createDictionary());
+    page(EditDictionaryView.pattern, ({ id }) => this.editDictionary(id));
+    page(NotFoundView.pattern, () => this.showNotFound());
     page();
 
     autorun(() => {
@@ -21,17 +27,22 @@ export default class ViewStore {
   }
 
   @action
-  showOverview() {
-    this.currentView = new Overview();
+  public showOverview() {
+    this.currentView = new OverviewView();
   }
 
   @action
-  showDictionary() {
-    this.currentView = new Dictionary();
+  public createDictionary() {
+    this.currentView = new CreateDictionaryView();
   }
 
   @action
-  showNotFound() {
-    this.currentView = new NotFound();
+  public editDictionary(id: string) {
+    this.currentView = new EditDictionaryView(id);
+  }
+
+  @action
+  public showNotFound() {
+    this.currentView = new NotFoundView();
   }
 }
