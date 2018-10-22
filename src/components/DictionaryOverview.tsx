@@ -33,7 +33,7 @@ export default class DictionaryOverview extends React.Component<
     if (!this.dictionary.transformations.length) {
       return (
         <div className="ui placeholder segment">
-          <h4 className="ui header">{this.dictionary.name}</h4>
+          {this.renderHeader()}
           <div className="ui header">No transformations yet.</div>
           {this.renderAddButton()}
         </div>
@@ -42,7 +42,7 @@ export default class DictionaryOverview extends React.Component<
 
     return (
       <div className="ui segment">
-        <h4 className="ui header">{this.dictionary.name}</h4>
+        {this.renderHeader()}
         <table className="ui celled table">
           <thead>
             <tr>
@@ -64,6 +64,26 @@ export default class DictionaryOverview extends React.Component<
     );
   }
 
+  private renderHeader() {
+    return (
+      <h4 className="ui header">
+        {this.dictionary.name}
+        <button
+          className="ui right floated red button"
+          onClick={this.handleClickDelete}
+        >
+          Delete
+        </button>
+        <button
+          className="ui right floated button"
+          onClick={this.handleClickEdit}
+        >
+          Edit
+        </button>
+      </h4>
+    );
+  }
+
   private renderAddButton() {
     return (
       <button
@@ -78,5 +98,12 @@ export default class DictionaryOverview extends React.Component<
 
   private handleClickAdd = () => {};
 
-  private handleClickEdit = (id: string) => {};
+  private handleClickEdit = () => {
+    this.injected.viewStore.editDictionary(this.props.dictionaryId);
+  };
+
+  private handleClickDelete = () => {
+    this.injected.dictionaryStore.removeDectionary(this.props.dictionaryId);
+    this.injected.viewStore.showOverview();
+  };
 }
