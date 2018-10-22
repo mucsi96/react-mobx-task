@@ -1,35 +1,37 @@
-import { observable, action, computed } from 'mobx';
-import View, { ViewName } from '../models/View';
+import { observable, autorun, action } from 'mobx';
+import { View, Overview, Dictionary } from '../views';
+import NotFound from '../views/NotFound';
+import page from 'page';
 
 export default class ViewStore {
   @observable
-  public currentView: View = {
-    name: ViewName.NotFound
-  };
+  public currentView: View = new NotFound();
 
-  @computed
-  public get currentPath(): string {
-    switch (this.currentView.name) {
-      case ViewName.Overview:
-        return '/';
-      case ViewName.Dictionary:
-        return '/dictionary';
-      default:
-        return window.location.pathname;
-    }
+  constructor() {
+    page(Overview.pattern, () => this.showOverview());
+    page(Dictionary.pattern, () => this.showDictionary());
+    page(NotFound.pattern, () => this.showNotFound());
+    page();
+
+    autorun(() => {
+      if (this.currentView.path !== window.location.pathname) {
+        window.history.pushState(null, document.title, this.currentView.path);
+      }
+    });
   }
 
   @action
-  public showOverview() {
-    this.currentView = {
-      name: ViewName.Overview
-    };
+  showOverview() {
+    this.currentView = new Overview();
   }
 
   @action
-  public showDictionary() {
-    this.currentView = {
-      name: ViewName.Dictionary
-    };
+  showDictionary() {
+    this.currentView = new Dictionary();
+  }
+
+  @action
+  showNotFound() {
+    this.currentView = new NotFound();
   }
 }
