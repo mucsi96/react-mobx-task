@@ -1,5 +1,9 @@
 import Transformation from './Transformation';
-import { observable, action } from 'mobx';
+import { observable, action, autorun } from 'mobx';
+import { ValidationResul } from './ValidationResult';
+import CloneValidator from './CloneValidator';
+import ForkValidator from './ForkValidator';
+import { Validator } from './Validator';
 
 export default class Dictionary {
   public readonly id: string;
@@ -10,9 +14,22 @@ export default class Dictionary {
   @observable
   public transformations: Transformation[] = [];
 
+  @observable
+  public validationResults: ValidationResul[] = [];
+
   constructor(name: string) {
     this.id = Date.now().toString();
     this.name = name;
+
+    autorun(
+      () => {
+        this.validationResults = [
+          new CloneValidator(),
+          new ForkValidator()
+        ].map(({ validate }: Validator) => validate(this.transformations));
+      },
+      { delay: 300 }
+    );
   }
 
   @action
@@ -47,5 +64,15 @@ export default class Dictionary {
     }
 
     return transformation;
+  }
+
+  public getValidationErrorById(transformationId: string): string | undefined {
+    for (const vaidationResult of this.validationResults) {
+      for (const transformation of vaidationResult.invalidItems) {
+        if (transformation.id === transformationId) {
+          return vaidationResult.errorMessage;
+        }
+      }
+    }
   }
 }

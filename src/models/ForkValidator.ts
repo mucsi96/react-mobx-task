@@ -1,4 +1,4 @@
-import { Validator } from './Vaidator';
+import { Validator } from './Validator';
 import Transformation from './Transformation';
 import { ValidationResul } from './ValidationResult';
 import {

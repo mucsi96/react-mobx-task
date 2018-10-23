@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import DictionaryStore from '../stores/DictionaryStore';
 import ViewStore from '../stores/ViewStore';
 import Dictionary from '../models/Dictionary';
+import { transaction } from 'mobx';
 
 interface DictionaryProps {
   dictionaryId: string;
@@ -56,7 +57,10 @@ export default class DictionaryOverview extends React.Component<
             <tbody>
               {this.dictionary.transformations.map(({ id, from, to }) => (
                 <tr key={id} onClick={() => this.handleItemClick(id)}>
-                  <td>{from}</td>
+                  <td>
+                    {this.renderValidationIcon(id)}
+                    {from}
+                  </td>
                   <td>{to}</td>
                 </tr>
               ))}
@@ -115,4 +119,20 @@ export default class DictionaryOverview extends React.Component<
       transformationId
     );
   };
+
+  private renderValidationIcon(transformationId: string) {
+    const validationMessage = this.dictionary.getValidationErrorById(
+      transformationId
+    );
+
+    if (validationMessage) {
+      return (
+        <span className="ui vaidation icon" data-tooltip={validationMessage}>
+          <i className="yellow exclamation triangle icon" />
+        </span>
+      );
+    }
+
+    return null;
+  }
 }

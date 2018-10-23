@@ -75,6 +75,7 @@ export default class EditTransformation extends React.Component<
                 type="text"
                 value={this.from}
                 onChange={event => this.setFrom(event.target.value)}
+                required={true}
               />
             </div>
             <div className="field">
@@ -83,6 +84,7 @@ export default class EditTransformation extends React.Component<
                 type="text"
                 value={this.to}
                 onChange={event => this.setTo(event.target.value)}
+                required={true}
               />
             </div>
             <button type="submit" className="ui button primary">
