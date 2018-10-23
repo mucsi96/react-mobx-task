@@ -9,7 +9,7 @@ describe('DictionaryStore', () => {
 
   it('should be capable to add new dictionaries', () => {
     const dictionaryStore = new DictionaryStore();
-    const dictionaryToBeAdded = new Dictionary();
+    const dictionaryToBeAdded = new Dictionary('test');
     dictionaryStore.addDictionary(dictionaryToBeAdded);
     expect(dictionaryStore.dictionaries).toHaveLength(1);
     expect(dictionaryStore.dictionaries[0]).toBe(dictionaryToBeAdded);
@@ -17,8 +17,8 @@ describe('DictionaryStore', () => {
 
   it('shoud be capable to remove dictionaries', () => {
     const dictionaryStore = new DictionaryStore();
-    const dictionaryToBeRemoved = new Dictionary();
-    const dictionaryToStay = new Dictionary();
+    const dictionaryToBeRemoved = new Dictionary('test');
+    const dictionaryToStay = new Dictionary('test');
     dictionaryStore.addDictionary(dictionaryToBeRemoved);
     dictionaryStore.addDictionary(dictionaryToStay);
     dictionaryStore.removeDectionary(dictionaryToBeRemoved.id);
