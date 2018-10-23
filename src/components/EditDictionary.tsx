@@ -44,8 +44,9 @@ export default class EditDictionary extends React.Component<
             {this.dictionary ? 'Edit dictionary' : 'Create dictionary'}
           </div>
           <div className="field">
-            <label>Name</label>
+            <label htmlFor="name">Name</label>
             <input
+              id="name"
               autoFocus={true}
               type="text"
               value={this.name}

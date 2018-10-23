@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditTransformation renders 1`] = `
+<DocumentFragment>
+  <div
+    class="ui basic clearing segment"
+  >
+    <div
+      class="ui left floated header"
+    >
+      Edit transformation
+    </div>
+    <div
+      class="ui right floated header"
+    >
+      <button
+        class="ui red button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+  <div
+    class="ui basic segment"
+  >
+    <form
+      class="ui form"
+    >
+      <div
+        class="field"
+      >
+        <label
+          for="from"
+        >
+          From
+        </label>
+        <input
+          id="from"
+          required=""
+          type="text"
+          value="b"
+        />
+      </div>
+      <div
+        class="field"
+      >
+        <label
+          for="to"
+        >
+          To
+        </label>
+        <input
+          id="to"
+          required=""
+          type="text"
+          value="c"
+        />
+      </div>
+      <button
+        class="ui button primary"
+        type="submit"
+      >
+        Save
+      </button>
+      <button
+        class="ui button"
+        type="button"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`EditTransformation renders in creation case 1`] = `
+<DocumentFragment>
+  <div
+    class="ui basic clearing segment"
+  >
+    <div
+      class="ui left floated header"
+    >
+      Create transformation
+    </div>
+    <div
+      class="ui right floated header"
+    />
+  </div>
+  <div
+    class="ui basic segment"
+  >
+    <form
+      class="ui form"
+    >
+      <div
+        class="field"
+      >
+        <label
+          for="from"
+        >
+          From
+        </label>
+        <input
+          id="from"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="field"
+      >
+        <label
+          for="to"
+        >
+          To
+        </label>
+        <input
+          id="to"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        class="ui button primary"
+        type="submit"
+      >
+        Create
+      </button>
+      <button
+        class="ui button"
+        type="button"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

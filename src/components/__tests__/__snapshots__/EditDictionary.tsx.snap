@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditDictionary renders 1`] = `
+<DocumentFragment>
+  <div
+    class="ui basic segment"
+  >
+    <form
+      class="ui form"
+    >
+      <div
+        class="ui header"
+      >
+        Edit dictionary
+      </div>
+      <div
+        class="field"
+      >
+        <label
+          for="name"
+        >
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          value="a"
+        />
+      </div>
+      <button
+        class="ui button primary"
+        type="submit"
+      >
+        Save
+      </button>
+      <button
+        class="ui button"
+        type="button"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`EditDictionary renders in creation case 1`] = `
+<DocumentFragment>
+  <div
+    class="ui basic segment"
+  >
+    <form
+      class="ui form"
+    >
+      <div
+        class="ui header"
+      >
+        Create dictionary
+      </div>
+      <div
+        class="field"
+      >
+        <label
+          for="name"
+        >
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        class="ui button primary"
+        type="submit"
+      >
+        Create
+      </button>
+      <button
+        class="ui button"
+        type="button"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;

@@ -69,8 +69,9 @@ export default class EditTransformation extends React.Component<
         <div className="ui basic segment">
           <form className="ui form" onSubmit={this.handleSubmit}>
             <div className="field">
-              <label>From</label>
+              <label htmlFor="from">From</label>
               <input
+                id="from"
                 autoFocus={true}
                 type="text"
                 value={this.from}
@@ -79,8 +80,9 @@ export default class EditTransformation extends React.Component<
               />
             </div>
             <div className="field">
-              <label>To</label>
+              <label htmlFor="to">To</label>
               <input
+                id="to"
                 type="text"
                 value={this.to}
                 onChange={event => this.setTo(event.target.value)}

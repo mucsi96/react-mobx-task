@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DictionaryList renders 1`] = `
+<DocumentFragment>
+  <div
+    class="ui basic clearing segment"
+  >
+    <div
+      class="ui left floated header"
+    >
+      a
+    </div>
+    <div
+      class="ui right floated header"
+    >
+      <button
+        class="ui button"
+      >
+        Back
+      </button>
+      <button
+        class="ui button"
+      >
+        Edit
+      </button>
+      <button
+        class="ui red button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+  <div
+    class="ui basic segment"
+  >
+    <table
+      class="ui selectable celled table"
+    >
+      <thead>
+        <tr>
+          <th>
+            From
+          </th>
+          <th>
+            To
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            b
+          </td>
+          <td>
+            c
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span
+              class="ui vaidation icon"
+              data-tooltip="test validation error"
+            >
+              <i
+                class="yellow exclamation triangle icon"
+              />
+            </span>
+            d
+          </td>
+          <td>
+            e
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button
+      class="ui primary button"
+    >
+      Add transformation
+    </button>
+  </div>
+</DocumentFragment>
+`;

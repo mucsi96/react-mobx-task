@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DictionaryList renders 1`] = `
+<DocumentFragment>
+  <div
+    class="ui basic segment"
+  >
+    <div
+      class="ui header"
+    >
+      Dictionaries
+    </div>
+    <div
+      class="ui relaxed divided list"
+    >
+      <div
+        class="item"
+      >
+        <div
+          class="content"
+        >
+          <a
+            class="header"
+          >
+            a
+          </a>
+        </div>
+      </div>
+      <div
+        class="item"
+      >
+        <div
+          class="content"
+        >
+          <a
+            class="header"
+          >
+            <i
+              class="yellow exclamation triangle icon"
+            />
+            b
+          </a>
+        </div>
+      </div>
+    </div>
+    <button
+      class="ui primary button"
+    >
+      Add dictionary
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DictionaryList renders if there is no dictionary 1`] = `
+<DocumentFragment>
+  <div
+    class="ui placeholder segment"
+  >
+    <div
+      class="ui icon header"
+    >
+      No dictionaries yet.
+    </div>
+    <button
+      class="ui primary button"
+    >
+      Add dictionary
+    </button>
+  </div>
+</DocumentFragment>
+`;
