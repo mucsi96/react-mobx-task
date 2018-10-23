@@ -1,4 +1,4 @@
-import { ValidationResul } from '../ValidationResult';
+import { ValidationResult } from '../ValidationResult';
 import CloneValidator from '../CloneValidator';
 import Transformation from '../Transformation';
 
@@ -6,7 +6,7 @@ const { validate } = new CloneValidator();
 
 describe('CloneValidator', () => {
   it('should give no validation error on valid input', () => {
-    const result: ValidationResul = validate([
+    const result: ValidationResult = validate([
       new Transformation('a', 'b'),
       new Transformation('c', 'd'),
       new Transformation('e', 'f')
@@ -16,7 +16,7 @@ describe('CloneValidator', () => {
   });
 
   it('should give no validation error on single input', () => {
-    const result: ValidationResul = validate([new Transformation('a', 'b')]);
+    const result: ValidationResult = validate([new Transformation('a', 'b')]);
     expect(result.errorMessage).toBeUndefined();
     expect(result.invalidItems).toHaveLength(0);
   });
@@ -24,7 +24,7 @@ describe('CloneValidator', () => {
   it('should give validation error on 2 identival rows', () => {
     const transfomation1 = new Transformation('c', 'd');
     const transfomation2 = new Transformation('c', 'd');
-    const result: ValidationResul = validate([
+    const result: ValidationResult = validate([
       transfomation1,
       new Transformation('e', 'f'),
       transfomation2
@@ -40,7 +40,7 @@ describe('CloneValidator', () => {
     const transfomation2 = new Transformation('c', 'd');
     const transfomation3 = new Transformation('c', 'd');
     const transfomation4 = new Transformation('c', 'd');
-    const result: ValidationResul = validate([
+    const result: ValidationResult = validate([
       transfomation2,
       new Transformation('a', 'b'),
       transfomation1,

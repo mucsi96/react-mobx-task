@@ -1,13 +1,13 @@
 import { Validator } from './Validator';
 import Transformation from './Transformation';
-import { ValidationResul } from './ValidationResult';
+import { ValidationResult } from './ValidationResult';
 import {
   transfrormationsToMap,
   TransformationMapInner
 } from '../helpers/validationHelper';
 
 export default class CloneValidator implements Validator {
-  public validate(transfomations: Transformation[]): ValidationResul {
+  public validate(transfomations: Transformation[]): ValidationResult {
     const transformationMap = transfrormationsToMap(transfomations);
 
     const invalidTransfomations: Transformation[] = Object.values(

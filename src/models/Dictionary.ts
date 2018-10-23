@@ -1,6 +1,6 @@
 import Transformation from './Transformation';
 import { observable, action, autorun } from 'mobx';
-import { ValidationResul } from './ValidationResult';
+import { ValidationResult } from './ValidationResult';
 import CloneValidator from './CloneValidator';
 import ForkValidator from './ForkValidator';
 import { Validator } from './Validator';
@@ -15,7 +15,7 @@ export default class Dictionary {
   public transformations: Transformation[] = [];
 
   @observable
-  public validationResults: ValidationResul[] = [];
+  public validationResults: ValidationResult[] = [];
 
   constructor(name: string) {
     this.id = Date.now().toString();

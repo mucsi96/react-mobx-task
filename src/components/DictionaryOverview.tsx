@@ -37,7 +37,7 @@ export default class DictionaryOverview extends React.Component<
           {this.renderHeader()}
           <div className="ui placeholder segment">
             <div className="ui icon header">No transformations yet.</div>
-            {this.renderAddButton()}
+            {this.renderFooter()}
           </div>
         </>
       );
@@ -66,7 +66,7 @@ export default class DictionaryOverview extends React.Component<
               ))}
             </tbody>
           </table>
-          {this.renderAddButton()}
+          {this.renderFooter()}
         </div>
       </>
     );
@@ -77,6 +77,9 @@ export default class DictionaryOverview extends React.Component<
       <div className="ui basic clearing segment">
         <div className="ui left floated header">{this.dictionary.name}</div>
         <div className="ui right floated header">
+          <button className="ui button" onClick={this.handleClickBack}>
+            Back
+          </button>
           <button className="ui button" onClick={this.handleClickEdit}>
             Edit
           </button>
@@ -88,7 +91,7 @@ export default class DictionaryOverview extends React.Component<
     );
   }
 
-  private renderAddButton() {
+  private renderFooter() {
     return (
       <button
         autoFocus={true}
@@ -98,6 +101,22 @@ export default class DictionaryOverview extends React.Component<
         Add transformation
       </button>
     );
+  }
+
+  private renderValidationIcon(transformationId: string) {
+    const validationMessage = this.dictionary.getValidationErrorById(
+      transformationId
+    );
+
+    if (validationMessage) {
+      return (
+        <span className="ui vaidation icon" data-tooltip={validationMessage}>
+          <i className="yellow exclamation triangle icon" />
+        </span>
+      );
+    }
+
+    return null;
   }
 
   private handleClickAdd = () => {
@@ -120,19 +139,7 @@ export default class DictionaryOverview extends React.Component<
     );
   };
 
-  private renderValidationIcon(transformationId: string) {
-    const validationMessage = this.dictionary.getValidationErrorById(
-      transformationId
-    );
-
-    if (validationMessage) {
-      return (
-        <span className="ui vaidation icon" data-tooltip={validationMessage}>
-          <i className="yellow exclamation triangle icon" />
-        </span>
-      );
-    }
-
-    return null;
-  }
+  private handleClickBack = () => {
+    this.injected.viewStore.showOverview();
+  };
 }

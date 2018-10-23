@@ -31,6 +31,7 @@ export default class DictionaryList extends React.Component {
             <div key={id} className="item">
               <div className="content">
                 <a className="header" onClick={() => this.handleItemClick(id)}>
+                  {this.renderValidationIcon(id)}
                   {name}
                 </a>
               </div>
@@ -52,6 +53,18 @@ export default class DictionaryList extends React.Component {
         Add dictionary
       </button>
     );
+  }
+
+  private renderValidationIcon(dictionaryId: string) {
+    const invalid = !this.injected.dictionaryStore.isDictionaryValid(
+      dictionaryId
+    );
+
+    if (invalid) {
+      return <i className="yellow exclamation triangle icon" />;
+    }
+
+    return null;
   }
 
   private handleClickAdd = () => {

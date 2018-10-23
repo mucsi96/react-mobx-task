@@ -1,6 +1,6 @@
 import Transformation from './Transformation';
-import { ValidationResul } from './ValidationResult';
+import { ValidationResult } from './ValidationResult';
 
 export interface Validator {
-  validate(transfomations: Transformation[]): ValidationResul;
+  validate(transfomations: Transformation[]): ValidationResult;
 }

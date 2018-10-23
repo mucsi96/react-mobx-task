@@ -30,4 +30,12 @@ export default class DictionaryStore {
 
     return dictionary;
   }
+
+  public isDictionaryValid(dictionaryId: string): boolean {
+    const dictionary = this.getDictionaryById(dictionaryId);
+
+    return dictionary.validationResults.every(
+      ({ errorMessage }) => !errorMessage
+    );
+  }
 }

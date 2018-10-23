@@ -1,6 +1,6 @@
 import Transformation from './Transformation';
 
-export interface ValidationResul {
+export interface ValidationResult {
   errorMessage?: string;
   invalidItems: Transformation[];
 }
