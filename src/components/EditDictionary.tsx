@@ -38,26 +38,32 @@ export default class EditDictionary extends React.Component<
 
   public render(): JSX.Element {
     return (
-      <form className="ui form" onSubmit={this.handleSubmit}>
-        <h4 className="ui header">
-          {this.dictionary ? 'Edit dictionary' : 'Create dictionary'}
-        </h4>
-        <div className="field">
-          <label>Name</label>
-          <input
-            autoFocus={true}
-            type="text"
-            value={this.name}
-            onChange={event => this.setName(event.target.value)}
-          />
-        </div>
-        <button type="submit" className="ui button primary">
-          {this.dictionary ? 'Save' : 'Create'}
-        </button>
-        <button type="button" className="ui button" onClick={this.handleCancel}>
-          Cancel
-        </button>
-      </form>
+      <div className="ui basic segment">
+        <form className="ui form" onSubmit={this.handleSubmit}>
+          <div className="ui header">
+            {this.dictionary ? 'Edit dictionary' : 'Create dictionary'}
+          </div>
+          <div className="field">
+            <label>Name</label>
+            <input
+              autoFocus={true}
+              type="text"
+              value={this.name}
+              onChange={event => this.setName(event.target.value)}
+            />
+          </div>
+          <button type="submit" className="ui button primary">
+            {this.dictionary ? 'Save' : 'Create'}
+          </button>
+          <button
+            type="button"
+            className="ui button"
+            onClick={this.handleCancel}
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
     );
   }
 
@@ -65,11 +71,10 @@ export default class EditDictionary extends React.Component<
     event.preventDefault();
     if (!this.dictionary) {
       this.injected.dictionaryStore.addDictionary(new Dictionary(this.name));
-      this.injected.viewStore.showOverview();
     } else {
       this.dictionary.name = this.name;
-      this.injected.viewStore.showOverview();
     }
+    this.injected.viewStore.showOverview();
   };
 
   private handleCancel = () => {

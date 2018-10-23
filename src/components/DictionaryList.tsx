@@ -17,15 +17,15 @@ export default class DictionaryList extends React.Component {
     if (!this.injected.dictionaryStore.dictionaries.length) {
       return (
         <div className="ui placeholder segment">
-          <div className="ui header">No dictionaries yet.</div>
+          <div className="ui icon header">No dictionaries yet.</div>
           {this.renderAddButton()}
         </div>
       );
     }
 
     return (
-      <div className="ui segment">
-        <h4 className="ui header">{'Dictionaries'}</h4>
+      <div className="ui basic segment">
+        <div className="ui header">{'Dictionaries'}</div>
         <div className="ui relaxed divided list">
           {this.injected.dictionaryStore.dictionaries.map(({ id, name }) => (
             <div key={id} className="item">

@@ -4,7 +4,9 @@ import {
   OverviewView,
   CreateDictionaryView,
   EditDictionaryView,
-  DictionaryView
+  DictionaryView,
+  CreateTransformationView,
+  EditTransformationView
 } from '../views';
 import NotFoundView from '../views/NotFoundView';
 import page from 'page';
@@ -18,6 +20,12 @@ export default class ViewStore {
     page(CreateDictionaryView.pattern, () => this.createDictionary());
     page(DictionaryView.pattern, ({ id }) => this.editDictionary(id));
     page(EditDictionaryView.pattern, ({ id }) => this.editDictionary(id));
+    page(CreateTransformationView.pattern, ({ dictionaryId }) =>
+      this.createTransformation(dictionaryId)
+    );
+    page(EditTransformationView.pattern, ({ dictionaryId, transformationId }) =>
+      this.editTransformation(dictionaryId, transformationId)
+    );
     page(NotFoundView.pattern, () => this.showNotFound());
     page();
 
@@ -51,5 +59,18 @@ export default class ViewStore {
   @action
   public showNotFound() {
     this.currentView = new NotFoundView();
+  }
+
+  @action
+  public createTransformation(dictionaryId: string) {
+    this.currentView = new CreateTransformationView(dictionaryId);
+  }
+
+  @action
+  public editTransformation(dictionaryId: string, transformationId: string) {
+    this.currentView = new EditTransformationView(
+      dictionaryId,
+      transformationId
+    );
   }
 }

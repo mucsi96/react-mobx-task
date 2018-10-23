@@ -37,6 +37,6 @@ describe('Dictionary', () => {
     dictionary.addTransformation(new Transformation('C', 'D'));
     expect(() => {
       dictionary.removeTransformation('notExistingId');
-    }).toThrowError('Transformation with index "notExistingId" was not found.');
+    }).toThrowError('Transformation with id "notExistingId" was not found.');
   });
 });

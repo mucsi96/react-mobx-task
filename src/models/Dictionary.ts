@@ -28,10 +28,24 @@ export default class Dictionary {
 
     if (index < 0) {
       throw new Error(
-        `Transformation with index "${transformationId}" was not found.`
+        `Transformation with id "${transformationId}" was not found.`
       );
     }
 
     this.transformations.splice(index, 1);
+  }
+
+  public getTransformationById(transformationId: string): Transformation {
+    const transformation = this.transformations.find(
+      ({ id }) => id === transformationId
+    );
+
+    if (!transformation) {
+      throw new Error(
+        `Transformation with id ${transformationId} was not found.`
+      );
+    }
+
+    return transformation;
   }
 }

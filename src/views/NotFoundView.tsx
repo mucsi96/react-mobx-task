@@ -9,6 +9,10 @@ export default class NotFoundView implements View {
   public static pattern = '*';
 
   public render() {
-    return <span>{'Not found'}</span>;
+    return (
+      <div className="ui placeholder segment">
+        <div className="ui icon header">404 Not found.</div>
+      </div>
+    );
   }
 }
